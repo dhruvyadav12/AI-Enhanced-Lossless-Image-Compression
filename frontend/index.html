@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Lossless Image Compressor
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <header class="header">
+
+        <div>
+
+            <h1>
+                AI Lossless
+                <span>Image Compressor</span>
+            </h1>
+
+            <p>
+                Predictive coding + ZigZag + Huffman compression
+            </p>
+
+        </div>
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Backend Online
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================================= -->
+    <!-- MAIN -->
+    <!-- ================================================= -->
+
+    <main class="container">
+
+
+        <!-- ================================================= -->
+        <!-- COMPRESSION SECTION -->
+        <!-- ================================================= -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Compress Image
+                    </h2>
+
+                    <p>
+                        Convert an image into a lossless
+                        <strong>.aic</strong> file.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Upload area -->
+
+            <div
+                class="upload-box"
+                id="imageUploadBox"
+            >
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>
+                    Upload an image
+                </h3>
+
+                <p>
+                    PNG, JPG, JPEG, BMP or other supported image
+                </p>
+
+                <label
+                    class="choose-button"
+                >
+
+                    Choose Image
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/*"
+                        hidden
+                    >
+
+                </label>
+
+                <p
+                    class="selected-file"
+                    id="selectedImageName"
+                ></p>
+
+            </div>
+
+
+            <!-- Compress button -->
+
+            <button
+                class="primary-button"
+                id="compressButton"
+            >
+
+                Compress Image
+
+            </button>
+
+
+            <!-- Compression result -->
+
+            <div
+                class="result"
+                id="compressionResult"
+                hidden
+            >
+
+                <h3>
+                    Compression Complete
+                </h3>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat">
+
+                        <span>
+                            Original Size
+                        </span>
+
+                        <strong
+                            id="originalSize"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            Compressed Size
+                        </span>
+
+                        <strong
+                            id="compressedSize"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            Compression Ratio
+                        </span>
+
+                        <strong
+                            id="compressionRatio"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            Size Reduction
+                        </span>
+
+                        <strong
+                            id="sizeReduction"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="download-button"
+                    id="downloadAicButton"
+                >
+
+                    Download .AIC
+
+                </button>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                class="error"
+                id="compressionError"
+                hidden
+            ></div>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- DECOMPRESSION SECTION -->
+        <!-- ================================================= -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Decompress AIC
+                    </h2>
+
+                    <p>
+                        Restore the original image from an
+                        <strong>.aic</strong> file.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="upload-box">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>
+                    Upload AIC file
+                </h3>
+
+                <p>
+                    Select a compressed .aic file
+                </p>
+
+                <label class="choose-button">
+
+                    Choose AIC
+
+                    <input
+                        type="file"
+                        id="aicInput"
+                        accept=".aic"
+                        hidden
+                    >
+
+                </label>
+
+                <p
+                    class="selected-file"
+                    id="selectedAicName"
+                ></p>
+
+            </div>
+
+
+            <button
+                class="secondary-button"
+                id="decompressButton"
+            >
+
+                Decompress AIC
+
+            </button>
+
+
+            <div
+                class="result"
+                id="decompressionResult"
+                hidden
+            >
+
+                <h3>
+                    Decompression Complete
+                </h3>
+
+
+                <div class="verification">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Lossless Verification Passed
+                        </strong>
+
+                        <p>
+                            The reconstructed image matches
+                            the original pixel data.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="download-button"
+                    id="downloadPngButton"
+                >
+
+                    Download Reconstructed PNG
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="error"
+                id="decompressionError"
+                hidden
+            ></div>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- BENCHMARK SECTION -->
+        <!-- ================================================= -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Predictor Benchmark
+                    </h2>
+
+                    <p>
+                        Compression performance comparison.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="benchmark"
+                id="benchmarkContainer"
+            >
+
+                Loading benchmark...
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================================================= -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <footer>
+
+        <p>
+            AI Lossless Image Compressor
+        </p>
+
+        <p>
+            C++ Compression Engine · FastAPI · Huffman Coding
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

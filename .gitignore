@@ -1,0 +1,65 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# C / C++ Compiled Binaries and Objects
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dylib
+*.dll
+cpp/src/encoder
+cpp/src/decoder
+cpp/src/*.exe
+cpp/src/*.o
+cpp/src/*.obj
+cpp/src/test.aic
+cpp/include/*.exe
+
+# Python Environments & Tools
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+tempCodeRunnerFile.py
+.pytest_cache/
+.ipynb_checkpoints/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Runtime Data & Temporary Uploads
+data/input/image.raw
+data/input/uploaded_*
+data/input/uploaded.*
+data/output/compressed.aic
+data/output/reconstructed.raw
+data/output/reconstructed.png
+data/output/header_test.aic
+data/output/huffman_table.bin
+
+# Keep sample image and model weights
+!data/input/test.png
+!data/output/predictor_model.pth
